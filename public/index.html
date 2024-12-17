@@ -4,8 +4,13 @@
   </head>
   <body>
     <a-scene>
-      <a-box color="red" position="0 2 -5" rotation="0 45 45" scale="2 2 2"></a-box>
-  
+      <a-assets>
+        <img id="env" src="../textures/orangutan_1600x1000_279157.jpg" alt="orangutan">
+        <img id="skyTexture"
+      src="../textures/futuristic-moon-background.jpg">
+    </a-assets>
+      <a-sphere src="#boxTexture" position="0 2 -5" rotation="0 45 45" scale="2 2 2"></a-sphere>
+      <a-sky src="#skyTexture"></a-sky>
     </a-scene>
   </body>
 </html>
