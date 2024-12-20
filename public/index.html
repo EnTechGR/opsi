@@ -1,17 +1,86 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
+    <meta charset="utf-8">
+    <title>Interactive VR Scene</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="javascripts/bundle.js"></script>
-  </head>
-  <body>
-    <a-scene>
-      <a-assets>
-        <img id="env" src="../textures/orangutan_1600x1000_279157.jpg" alt="orangutan">
-        <img id="skyTexture"
-      src="../textures/futuristic-moon-background.jpg">
-    </a-assets>
-      <a-sphere src="#boxTexture" position="0 2 -5" rotation="0 45 45" scale="2 2 2"></a-sphere>
-      <a-sky src="#skyTexture"></a-sky>
-    </a-scene>
-  </body>
-</html>
+    <script src="./node_modules/aframe-inspector/dist/aframe-inspector.min.js"></script>
+    <script>
+        // Custom watcher component
+        AFRAME.registerComponent('watcher', {
+            schema: { message: { type: 'string', default: 'Entity clicked!' } },
+            init: function () {
+                this.el.addEventListener('click', () => {
+                    console.log(this.data.message);
+                });
 
+                this.el.addEventListener('mouseenter', () => {
+                    console.log('Mouse entered the entity.');
+                });
+
+                this.el.addEventListener('mouseleave', () => {
+                    console.log('Mouse left the entity.');
+                });
+            }
+        });
+
+        // Custom rotation component
+        AFRAME.registerComponent('self-rotate', {
+            schema: {
+                speed: { type: 'number', default: 0.5 } // Rotation speed
+            },
+            tick: function (time, timeDelta) {
+                const rotation = this.el.object3D.rotation;
+                rotation.y += this.data.speed * (timeDelta / 1000); // Rotate around Y-axis
+            }
+        });
+        AFRAME.registerComponent('navigate-to', {
+    schema: { url: { type: 'string' } },
+    init: function () {
+        this.el.addEventListener    ('click', () => {
+            console.log('Navigating to:', this.data.url); // Debug log
+            window.location.href = this.data.url;
+        });
+    }
+});
+    </script>
+</head>
+<body>
+    <a-scene>
+        <!-- Background -->
+        <a-sky src="../textures/backround2.jpg" rotation="0 -130 0"></a-sky>
+        <cursor></cursor>
+        <!-- Spheres with watcher and rotation components -->
+        <a-entity geometry="primitive: sphere; radius: 1"
+          material="src: ../textures/planetexmp.jpg"
+          position="-6 1 -5"
+          watcher="message: Earth sphere clicked!"
+          self-rotate="speed: 0.5"
+          navigate-to="url: biome1.html">
+        </a-entity>
+
+
+        <a-entity geometry="primitive: sphere; radius: 1"
+                  material="src: ../textures/planetexmp1.jpg"
+                  position="-2 1 -5"
+                  watcher="message: Mars sphere clicked!"
+                  self-rotate="speed: 0.5">
+        </a-entity>
+
+        <a-entity geometry="primitive: sphere; radius: 1"
+                  material="src: ../textures/planetexmp2.jpg"
+                  position="2 1 -5"
+                  watcher="message: Jupiter sphere clicked!"
+                  self-rotate="speed: 0.5">
+        </a-entity>
+
+        <a-entity geometry="primitive: sphere; radius: 1"
+                  material="src: ../textures/planetexmp3.jpg"
+                  position="6 1 -5"
+                  watcher="message: Saturn sphere clicked!"
+                  self-rotate="speed: 0.5">
+        </a-entity>
+    </a-scene>
+</body>
+</html>
