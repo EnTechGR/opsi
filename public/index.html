@@ -9,21 +9,28 @@
     <script>
         // Custom watcher component
         AFRAME.registerComponent('watcher', {
-            schema: { message: { type: 'string', default: 'Entity clicked!' } },
-            init: function () {
-                this.el.addEventListener('click', () => {
-                    console.log(this.data.message);
-                });
+    schema: { message: { type: 'string', default: 'Entity clicked!' } },
+    init: function () {
+        const el = this.el;
 
-                this.el.addEventListener('mouseenter', () => {
-                    console.log('Mouse entered the entity.');
-                });
+        // Listen for click and VR controller events
+            el.addEventListener('click', () => {
+              console.log(this.data.message);
+            });
 
-                this.el.addEventListener('mouseleave', () => {
-                    console.log('Mouse left the entity.');
-                });
-            }
-        });
+            el.addEventListener('triggerdown', () => {
+              console.log(this.data.message);
+            });
+
+            el.addEventListener('mouseenter', () => {
+              console.log('Mouse entered the entity.');
+            });
+
+            el.addEventListener('mouseleave', () => {
+              console.log('Mouse left the entity.');
+            });
+        }
+    });
 
         // Custom rotation component
         AFRAME.registerComponent('self-rotate', {
@@ -51,8 +58,14 @@
         <!-- Background -->
         <a-sky src="../textures/backround2.jpg" rotation="0 -130 0"></a-sky>
         <cursor></cursor>
+        <a-entity 
+        cursor="rayOrigin: mouse"
+        raycaster="objects: .clickable">
+        </a-entity>
         <!-- Spheres with watcher and rotation components -->
-        <a-entity geometry="primitive: sphere; radius: 1"
+        <a-entity 
+          class="clickable"
+          geometry="primitive: sphere; radius: 1"
           material="src: ../textures/planetexmp.jpg"
           position="-6 1 -5"
           watcher="message: Earth sphere clicked!"
