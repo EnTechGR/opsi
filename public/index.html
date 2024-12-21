@@ -9,28 +9,28 @@
     <script>
         // Custom watcher component
         AFRAME.registerComponent('watcher', {
-    schema: { message: { type: 'string', default: 'Entity clicked!' } },
-    init: function () {
-        const el = this.el;
+            schema: { message: { type: 'string', default: 'Entity clicked!' } },
+            init: function () {
+                const el = this.el;
 
-        // Listen for click and VR controller events
-            el.addEventListener('click', () => {
-              console.log(this.data.message);
-            });
+                // Listen for click and VR controller events
+                el.addEventListener('click', () => {
+                    console.log(this.data.message);
+                });
 
-            el.addEventListener('triggerdown', () => {
-              console.log(this.data.message);
-            });
+                el.addEventListener('triggerdown', () => {
+                    console.log(this.data.message);
+                });
 
-            el.addEventListener('mouseenter', () => {
-              console.log('Mouse entered the entity.');
-            });
+                el.addEventListener('mouseenter', () => {
+                    console.log('Mouse entered the entity.');
+                });
 
-            el.addEventListener('mouseleave', () => {
-              console.log('Mouse left the entity.');
-            });
-        }
-    });
+                el.addEventListener('mouseleave', () => {
+                    console.log('Mouse left the entity.');
+                });
+            }
+        });
 
         // Custom rotation component
         AFRAME.registerComponent('self-rotate', {
@@ -42,15 +42,17 @@
                 rotation.y += this.data.speed * (timeDelta / 1000); // Rotate around Y-axis
             }
         });
+
+        // Custom navigation component
         AFRAME.registerComponent('navigate-to', {
-    schema: { url: { type: 'string' } },
-    init: function () {
-        this.el.addEventListener    ('click', () => {
-            console.log('Navigating to:', this.data.url); // Debug log
-            window.location.href = this.data.url;
+            schema: { url: { type: 'string' } },
+            init: function () {
+                this.el.addEventListener('click', () => {
+                    console.log('Navigating to:', this.data.url); // Debug log
+                    window.location.href = this.data.url;
+                });
+            }
         });
-    }
-});
     </script>
 </head>
 <body>
@@ -59,8 +61,8 @@
         <a-sky src="../textures/backround2.jpg" rotation="0 -130 0"></a-sky>
         <cursor></cursor>
         <a-entity 
-        cursor="rayOrigin: mouse"
-        raycaster="objects: .clickable">
+            cursor="rayOrigin: mouse"
+            raycaster="objects: .clickable">
         </a-entity>
         <!-- Spheres with watcher and rotation components -->
         <a-entity 
@@ -73,26 +75,34 @@
           navigate-to="url: biome1.html">
         </a-entity>
 
-
-        <a-entity geometry="primitive: sphere; radius: 1"
-                  material="src: ../textures/planetexmp1.jpg"
-                  position="-2 1 -5"
-                  watcher="message: Mars sphere clicked!"
-                  self-rotate="speed: 0.5">
+        <a-entity 
+          class="clickable"
+          geometry="primitive: sphere; radius: 1"
+          material="src: ../textures/planetexmp1.jpg"
+          position="-2 1 -5"
+          watcher="message: Mars sphere clicked!"
+          self-rotate="speed: 0.5"
+          navigate-to="url: biome2.html">
         </a-entity>
 
-        <a-entity geometry="primitive: sphere; radius: 1"
-                  material="src: ../textures/planetexmp2.jpg"
-                  position="2 1 -5"
-                  watcher="message: Jupiter sphere clicked!"
-                  self-rotate="speed: 0.5">
+        <a-entity 
+          class="clickable"
+          geometry="primitive: sphere; radius: 1"
+          material="src: ../textures/planetexmp2.jpg"
+          position="2 1 -5"
+          watcher="message: Jupiter sphere clicked!"
+          self-rotate="speed: 0.5"
+          navigate-to="url: biome3.html">
         </a-entity>
 
-        <a-entity geometry="primitive: sphere; radius: 1"
-                  material="src: ../textures/planetexmp3.jpg"
-                  position="6 1 -5"
-                  watcher="message: Saturn sphere clicked!"
-                  self-rotate="speed: 0.5">
+        <a-entity 
+          class="clickable"
+          geometry="primitive: sphere; radius: 1"
+          material="src: ../textures/planetexmp3.jpg"
+          position="6 1 -5"
+          watcher="message: Saturn sphere clicked!"
+          self-rotate="speed: 0.5"
+          navigate-to="url: biome4.html">
         </a-entity>
     </a-scene>
 </body>
