@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="utf-8">
+    <title>Biome 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../javascripts/bundle.js"></script>
+    <script src="../node_modules/aframe-inspector/dist/aframe-inspector.min.js"></script>
+    <script>
+        AFRAME.registerComponent('self-rotate', {
+            schema: {
+                speed: { type: 'number', default: 0.5 }
+            },
+            tick: function (time, timeDelta) {
+                const rotation = this.el.object3D.rotation;
+                rotation.y += this.data.speed * (timeDelta / 1000);
+            }
+        });
+    </script>
+</head>
+<body>
+    <a-scene>
+        <!-- Background -->
+        <a-sky src="../textures/skybiome1.jpg" rotation="0 -130 0"></a-sky>
+
+        <!-- Cursor -->
+        <a-entity 
+            cursor="rayOrigin: mouse"
+            raycaster="objects: .clickable">
+        </a-entity>
+
+
+        <!-- Image -->
+        <a-plane 
+            src="../textures/1kat.jpeg" 
+            position="0 2 -4" 
+            width="2" 
+            height="3">
+        </a-plane>
+        <text
+            value="ΚΛΑΣΙΚΩΝ ΚΑΙ ΑΝΘΡΩΠΙΣΤΙΚΩΝ ΣΠΟΥΔΩΝ"
+            position="0 1.5 -4"
+            color="white"
+            align="center"
+            width="6">
+        </text>
+
+    </a-scene>
+
+    <!-- Greek Text as an HTML Overlay -->
+    <div style="position: absolute; top: 10%; left: 50%; transform: translateX(-50%); color: white; font-size: 24px; font-family: Arial, sans-serif;">
+        ΚΛΑΣΙΚΩΝ ΚΑΙ ΑΝΘΡΩΠΙΣΤΙΚΩΝ ΣΠΟΥΔΩΝ
+    </div>
+</body>
+</html>

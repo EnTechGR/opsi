@@ -65,45 +65,56 @@
             raycaster="objects: .clickable">
         </a-entity>
         <!-- Spheres with watcher and rotation components -->
-        <a-entity 
+        <a-entity id = "planet1"
           class="clickable"
           geometry="primitive: sphere; radius: 1"
           material="src: ../textures/planetexmp.jpg"
           position="-6 1 -5"
           watcher="message: Earth sphere clicked!"
           self-rotate="speed: 0.5"
-          navigate-to="url: biome1.html">
+          navigate-to="url: ../biomes/biome1.html">
         </a-entity>
 
-        <a-entity 
+        <a-entity id = "planet2"
           class="clickable"
           geometry="primitive: sphere; radius: 1"
           material="src: ../textures/planetexmp1.jpg"
           position="-2 1 -5"
           watcher="message: Mars sphere clicked!"
           self-rotate="speed: 0.5"
-          navigate-to="url: biome2.html">
+          navigate-to="url: ../biomes/biome2.html">
         </a-entity>
 
-        <a-entity 
+        <a-entity id = "planet3"
           class="clickable"
           geometry="primitive: sphere; radius: 1"
           material="src: ../textures/planetexmp2.jpg"
           position="2 1 -5"
           watcher="message: Jupiter sphere clicked!"
           self-rotate="speed: 0.5"
-          navigate-to="url: biome3.html">
+          navigate-to="url: ../biomes/biome3.html">
         </a-entity>
 
-        <a-entity 
+        <a-entity id = "planet4"
           class="clickable"
           geometry="primitive: sphere; radius: 1"
           material="src: ../textures/planetexmp3.jpg"
           position="6 1 -5"
           watcher="message: Saturn sphere clicked!"
           self-rotate="speed: 0.5"
-          navigate-to="url: biome4.html">
+          navigate-to="url: ../biomes/biome4.html">
         </a-entity>
+        
+        <a-entity id = "planet5"
+          class="clickable"
+          geometry="primitive: sphere; radius: 1"
+          material="src: ../textures/planetexmp.jpg"
+          position="6 1 -10"
+          watcher="message: Earth sphere clicked!"
+          self-rotate="speed: 0.5"
+          navigate-to="url: ../biomes/biome5.html">
+        </a-entity>
+
     </a-scene>
 </body>
 </html>
