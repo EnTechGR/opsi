@@ -94,15 +94,15 @@
 
       <!-- Sphere 1 with video popup -->
       <a-sphere
-        id="sphere1"
-        self-rotate="speed: 0.5"
-        material="src: ../textures/planetexmp1.jpg"
-        class="clickable hoverable"
-        radius="0.3"
-        position="-2 1.6 -3"
-        toggle-visibility-on-click="target: #infoPlane"
-        show-text-on-hover="target: #text1"
-      ></a-sphere>
+      id="sphere1"
+      self-rotate="speed: 0.5"
+      material="src: ../textures/planetexmp1.jpg"
+      class="clickable hoverable"
+      radius="0.3"
+      position="-1.5 1.5 -3"
+      toggle-visibility-on-click="target: #infoPlane"
+      show-text-on-hover="target: #text1"
+    ></a-sphere>
 
       <!-- Sphere 1's hover text -->
       <a-text
@@ -111,26 +111,20 @@
         color="white"
         align="center"
         visible="false"
-        position="-2 2.3 -3"
+        position="-1.5 2 -3" 
       ></a-text>
 
       <!-- Info Plane -->
       <a-plane
         id="infoPlane"
         visible="false"
-        position="-4 1.6 -3" 
+        position="-3.5 0.6 -2.5" 
+        rotation="0 55 0"
         width="3"
         height="2"
         color="#FFFFFF"
         material="opacity: 0.8"
       >
-        <a-text
-          value="Here is some info!\nClick sphere again to hide."
-          color="#000000"
-          align="center"
-          width="2.5"
-          position="0 0.5 0.01"
-        ></a-text>
 
       <!-- Video plane -->
       <a-plane 
@@ -164,14 +158,14 @@
 
       <!-- Sphere 2 -->
       <a-sphere
-        id="sphere2"
-        self-rotate="speed: 0.5"
-        material="src: ../textures/planetexmp2.jpg"
-        class="hoverable"
-        radius="0.3"
-        position="0 1.6 -3"
-        show-text-on-hover="target: #text2"
-      ></a-sphere>
+      id="sphere2"
+      self-rotate="speed: 0.5"
+      material="src: ../textures/planetexmp2.jpg"
+      class="hoverable"
+      radius="0.3"
+      position="1.5 1.5 -3" 
+      show-text-on-hover="target: #text2"
+    ></a-sphere>
       <!-- Sphere 2's hover text -->
       <a-text
         id="text2"
@@ -181,32 +175,55 @@
         negate="false"
         align="center"
         visible="false"
-        position="0 2.3 -3"
+        position="1.5 2 -3"
       ></a-text>
 
       <!-- Sphere 3 -->
       <a-sphere
-        id="sphere3"
-        self-rotate="speed: 0.5"
-        material="src: ../textures/planetexmp3.jpg"
-        class="hoverable"
-        radius="0.3"
-        position="2 1.6 -3"
-        show-text-on-hover="target: #text3"
-      ></a-sphere>
+      id="sphere3"
+      self-rotate="speed: 0.5"
+      material="src: ../textures/planetexmp3.jpg"
+      class="hoverable"
+      radius="0.3"
+      position="-1.5 -0.5 -3" 
+      show-text-on-hover="target: #text3"
+    ></a-sphere>
       <!-- Sphere 3's hover text -->
       <a-text
         id="text3"
-        value="Hello from Sphere 3!"
+        value="ΛΟΓΟΤΕΧΝΙΑΣ ΠΟΛΙΤΙΣΜΟΥ"
+        font="custom-msdf.json"
+        negate="false"
         color="white"
         align="center"
         visible="false"
-        position="2 2.3 -3"
+        position="-1.5 0 -3"
       ></a-text>
-
+      
+      <a-sphere
+  id="sphere4"
+  self-rotate="speed: 0.5"
+  material="src: ../textures/planetexmp1.jpg"
+  class="hoverable"
+  radius="0.3"
+  position="1.5 -0.5 -3" 
+  show-text-on-hover="target: #text4"
+></a-sphere>
+<a-text
+        id="text4"
+        value="Τεστ"
+        font="custom-msdf.json"
+        negate="false"
+        color="white"
+        align="center"
+        visible="false"
+        position="1.5 0 -3" 
+        ></a-text>
       <!-- Lines connecting the spheres -->
-      <a-entity line="start: -2 1.6 -3; end: 0 1.6 -3; color: white"></a-entity>
-      <a-entity line="start: 0 1.6 -3; end: 2 1.6 -3; color: white"></a-entity>
+      <a-entity line="start: -1.5 1.5 -3; end: 1.5 1.5 -3; color: white"></a-entity>
+<a-entity line="start: 1.5 1.5 -3; end: 1.5 -0.5 -3; color: white"></a-entity>
+<a-entity line="start: 1.5 -0.5 -3; end: -1.5 -0.5 -3; color: white"></a-entity>
+<a-entity line="start: -1.5 -0.5 -3; end: -1.5 1.5 -3; color: white"></a-entity>
     </a-scene>
   </body>
 </html>
